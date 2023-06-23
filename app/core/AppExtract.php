@@ -5,8 +5,10 @@ namespace app\core;
 class AppExtract
 {
     private array $uri = [];
+    private array $params = [];
     private string $method = 'index';
     private string $controller = 'Home';
+    private int $sliceIndexStartFrom = 2;
 
     public function controller(): string
     {
@@ -37,12 +39,18 @@ class AppExtract
 
         if (!method_exists($this->controller, $this->method)) {
             $this->method = 'index';
+            $this->sliceIndexStartFrom = 1;
         }
 
         return $this->method;
     }
 
-    public function params()
+    public function params(): array
     {
+        $countUri = count($this->uri);
+
+        $this->params = array_slice($this->uri, $this->sliceIndexStartFrom, $countUri);
+
+        return $this->params;
     }
 }

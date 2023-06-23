@@ -8,6 +8,7 @@ require '../vendor/autoload.php';
 
 $app = new AppExtract;
 $app->controller();
-$method = $app->method();
+$app->method();
+$params = $app->params();
 
-var_dump($method);
+var_dump($params);
