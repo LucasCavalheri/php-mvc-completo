@@ -2,21 +2,21 @@
 
 namespace app\core;
 
-use app\interfaces\ControllerInterface;
+use app\interfaces\AppInterface;
 
 class MyApp
 {
     private $controller;
 
-    public function __construct(private ControllerInterface $controllerInterface)
+    public function __construct(private AppInterface $appInterface)
     {
     }
 
     public function controller()
     {
-        $controller = $this->controllerInterface->controller();
-        $method = $this->controllerInterface->method($controller);
-        $params = $this->controllerInterface->params();
+        $controller = $this->appInterface->controller();
+        $method = $this->appInterface->method($controller);
+        $params = $this->appInterface->params();
 
         $this->controller = new $controller;
         $this->controller->$method($params);
