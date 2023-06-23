@@ -6,10 +6,8 @@ use app\interfaces\ControllerInterface;
 
 class AppExtract implements ControllerInterface
 {
-    private array $uri = [];
     private array $params = [];
-    private string $method = 'index';
-    private int $sliceIndexStartFrom = 2;
+    private int $sliceIndexStartFrom;
 
     public function controller(): string
     {
@@ -18,27 +16,19 @@ class AppExtract implements ControllerInterface
 
     public function method($controller): string
     {
-        if (isset($this->uri[1])) {
-            $this->method = strtolower($this->uri[1]);
-        }
+        [$method, $sliceIndexStartFrom] = MethodExtract::extract($controller);
+        $this->sliceIndexStartFrom = $sliceIndexStartFrom;
 
-        if ($this->method == '') {
-            $this->method = 'index';
-        }
-
-        if (!method_exists($controller, $this->method)) {
-            $this->method = 'index';
-            $this->sliceIndexStartFrom = 1;
-        }
-
-        return $this->method;
+        return $method;
     }
 
     public function params(): array
     {
-        $countUri = count($this->uri);
+        $uri = Uri::uri();
 
-        $this->params = array_slice($this->uri, $this->sliceIndexStartFrom, $countUri);
+        $countUri = count($uri);
+
+        $this->params = array_slice($uri, $this->sliceIndexStartFrom, $countUri);
 
         return $this->params;
     }
