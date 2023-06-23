@@ -9,6 +9,10 @@
 
 <body>
     <h2>MVC em PHP</h2>
+
+    <div>
+        <?php require VIEW_PATH.$controller->view; ?>
+    </div>
 </body>
 
 </html>

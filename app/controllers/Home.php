@@ -4,8 +4,15 @@ namespace app\controllers;
 
 class Home
 {
+    public array $data = [];
+    public string $view = '';
+
     public function index()
     {
-        return 'home index';
+        $this->view = 'home.php';
+        $this->data = [
+            'title' => 'Home',
+            'name' => 'Lucas'
+        ];
     }
 }

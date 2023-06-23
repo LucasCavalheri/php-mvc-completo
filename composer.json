@@ -5,7 +5,8 @@
       "app\\": "app"
     },
     "files": [
-      "app/helpers/exception.php"
+      "app/helpers/exception.php",
+      "app/helpers/constants.php"
     ]
   },
   "authors": [

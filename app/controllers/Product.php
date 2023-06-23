@@ -6,11 +6,9 @@ class Product
 {
     public function index()
     {
-        return 'product index';
     }
 
-    public function edit()
+    public function edit(array $args)
     {
-        return 'product edit';
     }
 }
