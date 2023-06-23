@@ -2,6 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\activerecord\FindAll;
+use app\models\User;
+
 class Home
 {
     public array $data = [];
@@ -9,10 +12,12 @@ class Home
 
     public function index()
     {
+        $users = (new User)->execute(new FindAll(fields: 'id,firstName,lastName'));
+
         $this->view = 'home.php';
         $this->data = [
             'title' => 'Home',
-            'name' => 'Lucas'
+            'users' => $users,
         ];
     }
 }

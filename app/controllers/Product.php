@@ -9,7 +9,6 @@ class Product
 
     public function index(array $args)
     {
-        var_dump($args);
         $this->view = 'edit.php';
         $this->data = [
             'title' => 'Product'
@@ -18,7 +17,6 @@ class Product
 
     public function edit(array $args)
     {
-        var_dump($args);
         $this->view = 'edit.php';
         $this->data = [
             'title' => 'Edit'
