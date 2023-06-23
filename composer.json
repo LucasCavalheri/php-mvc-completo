@@ -15,5 +15,7 @@
       "email": "cav.catecumenal@gmail.com"
     }
   ],
-  "require": {}
+  "require": {
+    "filp/whoops": "^2.15"
+  }
 }
