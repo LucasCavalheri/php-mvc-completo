@@ -2,9 +2,9 @@
 
 namespace app\core;
 
-use app\interfaces\ControllerInterface;
+use app\interfaces\AppInterface;
 
-class AppExtract implements ControllerInterface
+class AppExtract implements AppInterface
 {
     private int $sliceIndexStartFrom;
 

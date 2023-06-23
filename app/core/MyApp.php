@@ -33,7 +33,6 @@ class MyApp
                 throw new \Exception('A propriedade $data precisa ter uma chave chamada title');
             }
 
-            $viewsPath = '../app/views/';
             extract($this->controller->data);
             require '../app/views/index.php';
         }

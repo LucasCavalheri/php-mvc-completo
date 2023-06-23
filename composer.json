@@ -6,7 +6,9 @@
     },
     "files": [
       "app/helpers/exception.php",
-      "app/helpers/constants.php"
+      "app/helpers/constants.php",
+      "app/helpers/flash.php",
+      "app/helpers/redirect.php"
     ]
   },
   "authors": [
