@@ -7,6 +7,7 @@ session_start();
 require '../vendor/autoload.php';
 
 $app = new AppExtract;
-$controller = $app->controller();
+$app->controller();
+$method = $app->method();
 
-var_dump($controller);
+var_dump($method);
