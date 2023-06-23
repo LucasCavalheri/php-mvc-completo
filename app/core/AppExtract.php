@@ -2,7 +2,9 @@
 
 namespace app\core;
 
-class AppExtract
+use app\interfaces\ControllerInterface;
+
+class AppExtract implements ControllerInterface
 {
     private array $uri = [];
     private array $params = [];
