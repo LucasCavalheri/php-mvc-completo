@@ -18,7 +18,7 @@
                 <li><a href="/login">Login</a></li>
             </ul>
             <div>
-                Bem-Vindo, Visitante!
+                <?= welcome('user'); ?>
             </div>
         </section>
         <?php require VIEW_PATH . $this->controller->view; ?>
