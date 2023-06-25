@@ -24,13 +24,12 @@ class SignUp
             'firstName' => [REQUIRED],
             'lastName' => [REQUIRED],
             'email' => [REQUIRED, EMAIL],
-            'password' => [REQUIRED, MAXLEN.':10'],
+            'password' => [REQUIRED, MAXLEN . ':5'],
         ]);
 
-        // if ($validate->errors) {
-
-        // }
-
+        if ($validate->errors) {
+            return redirect('/');
+        }
         // 
     }
 }
