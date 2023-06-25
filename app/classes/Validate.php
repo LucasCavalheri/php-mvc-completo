@@ -2,26 +2,43 @@
 
 namespace app\classes;
 
+use app\interfaces\ValidateInterface;
+
 class Validate
 {
+    private function executeClass(ValidateInterface $validateInterface, $field, $param)
+    {
+        $validateInterface->handle($field, $param);
+    }
+
+    private function validationInstance(string $field, array $validations)
+    {
+        foreach ($validations as $classValidate) {
+            $namespace = "app\\classes\\";
+
+            $class = $namespace . $classValidate;
+
+            [$class, $param] = $this->classWithColon($class);
+
+            if (class_exists($class)) {
+                $this->executeClass(new $class, $field, $param);
+            }
+        }
+    }
+
+    private function classWithColon($class)
+    {
+        if (str_contains($class, ':')) {
+            [$class, $param] = explode(':', $class);
+        }
+
+        return [$class, $param ?? null];
+    }
+
     public function handle(array $validations)
     {
         foreach ($validations as $field => $validation) {
-            foreach ($validation as $classValidate) {
-                $namespace = "app\\classes\\";
-
-                $class = $namespace . $classValidate;
-
-                if (str_contains($class, ':')) {
-                    [$class, $param] = explode(':', $class);
-                    var_dump($class);
-                }
-
-
-                if (class_exists($class)) {
-                    // var_dump('Classe Existe');
-                }
-            }
+            $this->validationInstance($field, $validation);
         }
     }
 }
