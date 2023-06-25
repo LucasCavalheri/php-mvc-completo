@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\classes\BlockNoReason;
 use app\classes\BlockNotLogged;
 use app\classes\Flash;
 use app\interfaces\ControllerInterface;
